@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" >
+    <title>KingCraftsMc - Destek</title>
+    <link rel="stylesheet" href="destekstili.css">
+    <link rel="icon" href="KingCraftsMC.png">
+    <link rel="apple-touch-icon" href="KingCraftsMC.png">
+</head>
+<body>
+
+<!-- Navbar -->
+<header class="navbar">
+    <div class="logo">
+        <img src="KingCraftsMc2.png" alt="KingCraftsMC Logo">
+        <span>KingCraftsMc</span>
+    </div>
+
+    <nav>
+        <ul>
+            <li><a href="index.html"><i class="fa fa-home"></i> Anasayfa</a></li>
+            <li><a href="sosyalmedya.html">🌐 Sosyal Medya</a></li>
+            <li><a href="destek.html" class="active">🎫 Destek</a></li>
+            <li><a href="yetkilibaşvurularu.html">✉ Başvurular</a></li>
+        </ul>
+    </nav>
+
+</header>
+
+<section class="support">
+    <h1>🎫 Destek Talebi Oluştur</h1>
+    <p>Bir sorun mu var? Aşağıdan Talep Oluşturarak Sorununu Bize Bildir, Bizde Çözelim.</p>
+
+    <form id="supportForm">
+        <input id="username" type="text" placeholder="Minecraft Kullanıcı Adı" required>
+        <input id="discord" type="text" placeholder="Discord Kullanıcı Adı" required>
+
+        <select id="category" required>
+            <option value="">Destek Türü</option>
+            <option>Genel Sorun</option>
+            <option>Yetkili Şikayet</option>
+            <option>Hile / Bug</option>
+            <option>Ödeme / Kredi</option>
+        </select>
+
+        <select id="priority" required>
+            <option value="">Öncelik</option>
+            <option>Normal</option>
+            <option>Yüksek</option>
+            <option>Acil</option>
+        </select>
+
+        <textarea id="message" placeholder="Sorununuzu detaylı bir şekilde anlatın..." required></textarea><br/><br/>
+
+        <p>Not: Kişisel Bilgileri Kesinlikle Yazmayınız.! (Tc Kimlik, vb.)</p>
+        <button type="submit">Destek Talebi Gönder</button>
+    </form>
+
+    <div class="success" id="supportSuccess">
+        ✅ Destek talebin alındı! Discord üzerinden incelenecek.
+    </div>
+</section>
+
+<script>
+const webhookURL = "https://discord.com/api/webhooks/1461378662745116682/oW-PidBi2_McL3eCaOZ8cDdINVEpoVgLHxyqk8uvyhisspJEg2gfHJM84E2quJ0O3u_X";
+
+document.getElementById("supportForm").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    const data = {
+        username: "KingCraftsMc Destek Sistemi",
+        embeds: [{
+            title: "🎫 Yeni Destek Talebi",
+            color: 15105570,
+            fields: [
+                { name: "🎮 MC Kullanıcı", value: username.value, inline: false },
+                { name: "💬 Discord", value: discord.value, inline: false },
+                { name: "📂 Kategori", value: category.value, inline: false },
+                { name: "⚠️ Öncelik", value: priority.value, inline: false },
+                { name: "📝 Mesaj", value: message.value, inline: false }
+            ],
+            footer: { text: "KingCraftsMc Destek Sistemi" }
+        }]
+    };
+
+    fetch(webhookURL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+    }).then(() => {
+        supportSuccess.style.display = "block";
+        supportForm.reset();
+    }).catch(() => {
+        alert("Destek talebi gönderilemedi!");
+    });
+});
+</script>
+</selection>
+
+<script src="snow.js"></script>
+
+</body>
+</html>
+

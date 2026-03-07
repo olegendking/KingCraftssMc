@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" >
+    <title>KingCraftsMc - Önerileriniz</title>
+    <link rel="stylesheet" href="genelbilgistili.css">
+    <link rel="icon" href="KingCraftsMC.png">
+    <link rel="apple-touch-icon" href="KingCraftsMC.png">
+</head>
+<body>
+
+<!-- Navbar -->
+<header class="navbar">
+    <div class="logo">
+        <img src="KingCraftsMc2.png" alt="KingCraftsMC Logo">
+        <span>KingCraftsMC</span>
+    </div>
+
+    <nav>
+        <ul>
+            <li><a href="index.html"><i class="fa fa-home"></i> Anasayfa</a></li>
+            <li><a href="sosyalmedya.html">🌐 Sosyal Medya</a></li>
+            <li><a href="destek.html">🎫 Destek</a></li>
+            <li><a href="yetkilibaşvurularu.html">✉ Başvurular</a></li>
+        </ul>
+    </nav>
+
+</header>
+
+<section class="application">
+    <h1>Önerileriniz & Şikayetleriniz</h1>
+    <p>Discord Sunucumuz Hakkında Önerilerinizi veya Şikayetlerinizi
+        Buradan Bizlere İletebilirsiniz.</p>
+
+    <form id="appForm">
+        Discord İsminiz? <br/>
+        <input id="dcname" type="text" placeholder="Discord İsim" required> <br/><br/>
+        Discord Sunucumuz Sizler İçin Her Daim Gelişiyoruz, Bize Öneri Verebilirmisin? <br/>
+        <textarea id="öneri" placeholder="Önerin mi Var? Buraya Yazıp 'Öneriyi/Şikayeti İlet' Butonuna Bas!" required></textarea><br/><br/>
+        Discord Sunucumuz Hakkında Şikayetinin mi Var? Buradan İletebilirsin. <br/>
+        <textarea id="şikayet" placeholder="Şiayetin mi Var? Buraya Yazıp 'Öneriyi/Şikayeti İlet' Butonuna Bas!" required></textarea><br/><br/>
+
+        <p>Not: Kişisel Bilgileri Kesinlikle Yazmayınız.! (Tc Kimlik, vb.)</p>
+    <button type="submit">Öneriyi/Şikayeti İlet</button>
+</form>
+
+<div class="success" id="successMsg">
+    ✅ Öneriniz/Şikayetiniz Discord’a gönderildi!
+</div>
+
+<script>
+const webhookURL = "https://discord.com/api/webhooks/1479783135637143673/K8r2h3ZbJ3CmOwyM6gpe30heD4UGsmJg6lN6kR9krtpl4wx8O3gW3GDxO_W4Bp45-sIC";
+
+document.getElementById("appForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const dcname = document.getElementById("dcname").value;
+    const öneri = document.getElementById("öneri").value;
+    const şikayet = document.getElementById("şikayet").value;
+
+    const data = {
+        username: "KingCraftsMc Öneri/Şikayet Sistemi",
+        embeds: [{
+            title: "Yeni Öneri/Şikayet Geldi!",
+            color: 3447003,
+            fields: [
+                { name: "👤 Discord", value: dcname, inline: true },
+                { name: "💬 Öneri", value: öneri, inline: false },
+                { name: "⚠️ Şikayet", value: şikayet, inline: false }
+            ],
+            footer: { text: "KingCraftsMc Öneri/Şikayet Sistemi" }
+        }]
+    };
+
+    fetch(webhookURL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+    })
+    .then(() => {
+        document.getElementById("successMsg").style.display = "block";
+        document.getElementById("appForm").reset();
+    })
+    .catch(err => {
+        alert("Discord'a gönderilemedi!");
+        console.error(err);
+    });
+});
+</script>
+</section>
+
+<footer class="footer">
+    <!-- ORTA LOGO -->
+    <div class="footer-logo">
+        <!-- Logo resmi buraya gelecek (boş bırakıldı) -->
+        <img src="KingCraftsMC.png" alt="Logo">
+    </div>
+
+    <!-- ALT MENÜLER -->
+    <div class="footer-menus">
+        <!-- SOL MENÜ -->
+        <div class="footer-menu left">
+            <h3><i class="fa fa-bars"></i> Hızlı Menü</h3>
+            <ul>
+                <li><a href="index.html"><i class="fa fa-home"></i> Anasayfa</a></li>
+                <li><a href="sosyalmedya.html">🌐 Sosyal Medya</a></li>
+                <li><a href="destek.html">🎫 Destek</a></li>
+                <li><a href="yetkilibaşvurularu.html">✉ Başvurular</a></li>
+            </ul>
+        </div>
+
+        <!-- SAĞ MENÜ -->
+        <div class="footer-menu right">
+            <h3>Bilgi</h3>
+            <ul>
+                <li><a href="genelbilgi.html">Genel Bilgiler</a></li>
+                <li><a href="gizlilikpolitikası.html">Gizlilik Politikası</a></li>
+                <li><a href="öneriler.html">Önerileriniz</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- ALT YAZI -->
+    <div class="footer-bottom">
+        <p>© 2026 Tüm hakları saklıdır.</p><br/>
+        <p><i class="fa fa-gamepad"></i> KingCraftsMC</p>
+    </div>
+</footer>
+
+<script src="snow.js"></script>
+
+</body>
+</html>
