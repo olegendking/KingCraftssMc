@@ -29,8 +29,8 @@
 </header>
 
 <section class="application">
-    <h1>🛡️ Klan Katılma Başvurusu</h1>
-    <p>Hey Sen! KingCraftsMc Klanına Katılmak İstermisin?
+    <h1>🛡️ Yetkili Başvurusu</h1>
+    <p>Hey Sen! KingCraftsMc Sunucusunda Yetkili Olmak İstermisin?
         Ozaman Formu Doldurup Bize Gönder En Geç 1 Hafta İçinde Geri Dönüş Yapalım.</p>
 
     <form id="appForm">
@@ -49,9 +49,9 @@
             <option>6+ Saat</option>
         </select> <br/><br/>
 
-        Klana Katkıda Bulunabilirmisin? <br/>
+        Sunucuya Katkıda Bulunabilirmisin? <br/>
         <input id="soru1" type="text" placeholder="" required> <br/><br/>
-        Diğer klan üyeleriyle iyi anlaşabilceğini düşünüyor musun? Halihazırda iyi anlaştığın bir klan üyesi var mı? Varsa kim? <br/>
+        Diğer Yetkili Üyeleriyle İyi Anlaşabilceğini Düşünüyor musun? Halihazırda İyi Anlaştığın Bir Yetkili Üyesi Var mı? Varsa Kim? <br/>
         <input id="soru2" type="text" placeholder="" required> <br/><br/>
 
         Minecraftı Ne Üzerinden Oynuyorsun? (Java / Bedrock) <br/>
@@ -61,7 +61,7 @@
             <option>Bedrock (Mobil)</option>
         </select> <br/><br/>
 
-        Bize Kendinden Biraz Bahsedermisin, Seni Neden Klana Alalım?
+        Bize Kendinden Biraz Bahsedermisin, Seni Neden Yetkili Alalım?
         <textarea id="reason" placeholder="Neden klana katılmak istiyorsun?" required></textarea><br/><br/>
 
         <p>Not: Kişisel Bilgileri Kesinlikle Yazmayınız.! (Tc Kimlik, vb.)</p>
@@ -69,9 +69,9 @@
 </form>
 
 <div class="success" id="successMsg">
-    ✅ Klan Başvurun Discord’a gönderildi!
+    ✅ Yetkili Başvurun Discord’a gönderildi!
 
-    Klana Kabul Edilip Edilmedini Discorda
+    Başvurunun Kabul Edilip Edilmedini Discorda
          Gelip Kontrol Edebilirsin
        https://discord.gg/TXxjFNhWUQ
 </div>
@@ -101,10 +101,10 @@ document.getElementById("appForm").addEventListener("submit", function(e) {
                 { name: "🎮 Minecraft Oyun İçi İsim", value: mcname, inline: false },
                 { name: "💬 Discord Oyun İçi İsim", value: dcname, inline: false },
                 { name: "⏱️ Ortalama Aktiflik Aralığı", value: time, inline: false },
-                { name: "Klana Katkıda Bulunabilirmisin?", value: soru1, inline: false },
-                { name: "Diğer klan üyeleriyle iyi anlaşabilceğini düşünüyor musun? Halihazırda iyi anlaştığın bir klan üyesi var mı? Varsa kim?", value: soru2, inline: false },
+                { name: "Sunu Katkıda Bulunabilirmisin?", value: soru1, inline: false },
+                { name: "Diğer Yetkili Üyeleriyle İyi Anlaşabilceğini Düşünüyor musun? Halihazırda İyi Anlaştığın Bir Yetkili Üyesi Var mı? Varsa Kim?", value: soru2, inline: false },
                 { name: "Minecraftı Ne Üzerinden Oynuyorsun? (Java Bilgisayar)", value: java, inline: false },
-                { name: "Bize Kendinden Biraz Bahsedermisin, Seni Neden Klana Alalım?", value: reason, inline: false }
+                { name: "Bize Kendinden Biraz Bahsedermisin, Seni Neden Yetkili Alalım?", value: reason, inline: false }
             ],
             footer: { text: "KingCraftsMc Yetkili Sistemi" }
         }]
